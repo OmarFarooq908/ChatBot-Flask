@@ -32,9 +32,26 @@ training_list = [
     "What's your job?",
     "I'm here to answer your questions"
 ]
+training_list_2 = [
+    "Hey",
+    "Ahoy!",
+    "What's your name?",
+    "I'm your Assistant.",
+    "How old are you?",
+    "I am 30 years old.",
+    "Are you mad?",
+    "Yess!",
+    "Do you have Android?",
+    "Maybe.",
+    "What's your favorite food?",
+    "I love pizza.",
+    "What's your job?",
+    "I'm here to help you seek answers."
+]
 #Train the chatbot
 list_trainer = ListTrainer(omar_bot)
 list_trainer.train(training_list)
+list.trainer.train(training_list_2)
 
 #Prompt the user for input
 while True:
