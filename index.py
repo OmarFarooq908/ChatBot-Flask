@@ -1,5 +1,5 @@
 from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
+from chatterbot.trainers import ListTrainer, ChatterBotCorpusTrainer
 
 #1st param = name, 2nd param = if the bot wants to learn,
 #3rd param = gives the chatbot build its logic upon
@@ -12,7 +12,7 @@ omar_bot = ChatBot("Omar-Bot", read_only=False, logic_adapters=[
         "maximum_similarity_threshold":0.9 #If similarity < 0.9, return default response
     }
     ])
-
+'''
 #Training list
 #First element is a question, successive element is answer
 #Going to be an even list, because we don't a question without answer
@@ -51,7 +51,11 @@ training_list_2 = [
 #Train the chatbot
 list_trainer = ListTrainer(omar_bot)
 list_trainer.train(training_list)
-list.trainer.train(training_list_2)
+list_trainer.train(training_list_2)
+'''
+
+trainer = ChatterBotCorpusTrainer(omar_bot)
+trainer.train("chatterbot.corpus.english")
 
 #Prompt the user for input
 while True:
