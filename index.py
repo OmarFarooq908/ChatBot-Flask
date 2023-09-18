@@ -1,5 +1,9 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer, ChatterBotCorpusTrainer
+from flask import Flask, render_template
+
+#Creating Flask App
+app = Flask(__name__)
 
 #1st param = name, 2nd param = if the bot wants to learn,
 #3rd param = gives the chatbot build its logic upon
@@ -55,10 +59,21 @@ list_trainer.train(training_list_2)
 '''
 
 trainer = ChatterBotCorpusTrainer(omar_bot)
-trainer.train("chatterbot.corpus.english")
+#trainer.train("chatterbot.corpus.english")
+
+#Creating a route
+@app.route("/")
+#There must be a function for every route
+def main():
+    return render_template("index.html")
+
 
 #Prompt the user for input
+'''
 while True:
     user_input = input("Human: ")
     #Tells the chatbot to pick out appropriate response to the input
     print("Chatterbot: " + str(omar_bot.get_response(user_input)))
+'''
+if __name__ == "__main__":
+    app.run(debug=True)
